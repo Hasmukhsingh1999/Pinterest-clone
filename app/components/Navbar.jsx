@@ -10,6 +10,7 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedItems, setSearchedItems] = useState([]);
   const [hoveredIndex, sethoveredIndex] = useState(null);
+
   const searchTermChange = async (e) => {
     const { value } = e.target;
     setSearchTerm(value);
@@ -29,9 +30,11 @@ const Navbar = () => {
       setSearchedItems([]);
     }
   };
+
   const handleMouseEnter = (index) => {
     sethoveredIndex(index);
   };
+
   const handleMouseLeave = () => {
     sethoveredIndex(null);
   };
@@ -60,30 +63,31 @@ const Navbar = () => {
           </div>
         </div>
         <div className="w-1/2 md:w-[50%]">
-          <div className="p-3 flex items-center bg-[#e9e9e9] rounded-full gap-2">
+          <div className="p-3 flex items-center bg-[#e9e9e9] rounded-full">
             <AiOutlineSearch className="text-gray-500" />
-            <input
-              type="search"
-              name="search"
-              id="search"
-              value={searchTerm}
-              onChange={searchTermChange}
-              placeholder="Search"
-              className="bg-transparent outline-none flex-grow"
-            />
+            <div className="w-full">
+              <input
+                type="search"
+                name="search"
+                id="search"
+                value={searchTerm}
+                onChange={searchTermChange}
+                placeholder="Search"
+                className="bg-transparent outline-none w-full"
+              />
+            </div>
           </div>
         </div>
         <div className="flex items-center space-x-4">
           <NotificationsIcon className="text-gray-700 hover-text-black text-2xl" />
           <MarkChatUnreadIcon className="text-gray-700 hover-text-black text-2xl" />
-
           <button className="font-semibold p-2 px-4 rounded-full md:visible hidden">
             Login
           </button>
         </div>
       </div>
 
-      <div className=" px-2 md:px-5 columns-2 md:columns-3 lg:columns-4 mb-4 xl:columns-5 space-y-6 mx-auto ">
+      <div className="px-2 md:px-5 columns-2 md:columns-3 lg:columns-4 mb-4 xl:columns-5 space-y-6 mx-auto">
         {searchedItems.map((image, index) => (
           <div
             key={index}
@@ -120,3 +124,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
